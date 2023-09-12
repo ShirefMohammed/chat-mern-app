@@ -1,0 +1,25 @@
+/* 
+  To setup tailwind css
+  https://www.freecodecamp.org/news/how-to-install-tailwindcss-in-react/
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Lemonada:wght@400;700&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  font-family: 'Lemonada', cursive;
+}
+
+@media(max-width: 500px){
+  .sm-max-w-220{
+    max-width: 220px;
+  }
+}
