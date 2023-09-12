@@ -12,8 +12,8 @@ const _PORT = process.env.PORT;
 connectDB();
 const app = express();
 
-app.use(cors({ origin: "http://localhost:5173" }));
-// app.use(cors({ origin: "https://chat-mern-app" }));
+// app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ origin: "https://chat-mern-app.vercel.app" }));
 app.use(express.json());
 app.use("/authentication", authenticationRouter);
 app.use("/users", usersRouter);
@@ -25,9 +25,13 @@ const server = app.listen(_PORT, () => console.log(`Server Works On ${_PORT}`));
 
 // socket.io
 
+// const io = require("socket.io")(server, {
+//   pingTimeout: 60000,
+//   cors: { origin: "http://localhost:5173" }
+// });
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
-  cors: { origin: "http://localhost:5173" }
+  cors: { origin: "https://chat-mern-app.vercel.app" }
 });
 
 let onlineUsers = [];
