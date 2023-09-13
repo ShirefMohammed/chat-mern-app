@@ -7,8 +7,7 @@ const usersRouter = require("./routes/usersRouter");
 const chatsRouter = require("./routes/chatsRouter");
 const messagesRouter = require("./routes/messagesRouter");
 const { handleErrors } = require("./middleware/handleErrorsMiddleware");
-// const _PORT = process.env.PORT;
-const _PORT = 3001;
+const _PORT = process.env.PORT;
 
 connectDB();
 const app = express();
