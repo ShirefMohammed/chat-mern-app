@@ -13,7 +13,8 @@ connectDB();
 const app = express();
 
 // app.use(cors({ origin: "http://localhost:5173" }));
-app.use(cors({ origin: "https://chat-mern-app.vercel.app" }));
+// app.use(cors({ origin: "https://chat-mern-app.vercel.app" }));
+app.use(cors());
 app.use(express.json());
 app.use("/authentication", authenticationRouter);
 app.use("/users", usersRouter);
@@ -21,7 +22,9 @@ app.use("/chats", chatsRouter);
 app.use("/messages", messagesRouter);
 app.use(handleErrors);
 
-app.get('/', (req, res) => res.send('Home Page Route'));
+app.get('/', (req, res, next) => {
+  res.status(200).json('Home Page Route');
+});
 
 const server = app.listen(_PORT, () => console.log(`Server Works On ${_PORT}`));
 
