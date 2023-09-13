@@ -13,7 +13,11 @@ connectDB();
 const app = express();
 
 // app.use(cors({ origin: "http://localhost:5173" }));
-// app.use(cors({ origin: "https://chat-mern-app.vercel.app" }));
+app.use(cors({
+  origin: "https://chat-mern-app.vercel.app",
+  methods: ["GET, POST, PUT"],
+  credentials: true
+}));
 app.use(cors());
 app.use(express.json());
 app.use("/authentication", authenticationRouter);
