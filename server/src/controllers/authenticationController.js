@@ -57,7 +57,10 @@ const signIn = async (req, res, next) => {
       });
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    // const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    //   expiresIn: "7d",
+    // });
+    const token = jwt.sign({ id: user._id }, "djhvjhcvjewv", {
       expiresIn: "7d",
     });
 
