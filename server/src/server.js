@@ -22,6 +22,8 @@ app.use("/chats", chatsRouter);
 app.use("/messages", messagesRouter);
 app.use(handleErrors);
 
+app.get('/', (req, res) => res.send('Home Page Route'));
+
 const server = app.listen(_PORT, () => console.log(`Server Works On ${_PORT}`));
 
 // socket.io
