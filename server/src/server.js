@@ -23,7 +23,11 @@ app.use("/messages", messagesRouter);
 app.use(handleErrors);
 
 app.get('/', (req, res, next) => {
-  res.status(200).json('Home Page Route');
+  try {
+    res.status(200).json({ message: 'Home Page Route' });
+  } catch (error) {
+    next(error)
+  }
 });
 
 const server = app.listen(_PORT, () => console.log(`Server Works On ${_PORT}`));
