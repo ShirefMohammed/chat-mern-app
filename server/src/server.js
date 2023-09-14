@@ -12,18 +12,15 @@ const _PORT = process.env.PORT;
 connectDB();
 const app = express();
 
-// app.use(cors({ origin: "http://localhost:5173" }));
-// app.use(cors({
-//   origin: "https://chat-mern-app.vercel.app",
-//   methods: ["GET, POST, PUT"],
-//   credentials: true
-// }));
 app.use(cors({
-  origin: "https://chat-mern-app-nzh1.onrender.com",
+  origin: [
+    "http://localhost:5173",
+    "https://chat-mern-app.vercel.app",
+    "https://chat-mern-app.onrender.com]",
+  ],
   methods: ["GET, POST, PUT"],
   credentials: true
 }));
-// app.use(cors());
 app.use(express.json());
 app.use("/authentication", authenticationRouter);
 app.use("/users", usersRouter);
@@ -31,33 +28,21 @@ app.use("/chats", chatsRouter);
 app.use("/messages", messagesRouter);
 app.use(handleErrors);
 
-app.get('/', (req, res, next) => {
-  try {
-    res.status(200).json({ message: 'Home Page Route' });
-  } catch (error) {
-    next(error)
-  }
-});
+app.get('/', (req, res, next) => res.send('Home Page Route'));
 
 const server = app.listen(_PORT, () => console.log(`Server Works On ${_PORT}`));
 
 // socket.io
 
-// const io = require("socket.io")(server, {
-//   pingTimeout: 60000,
-//   cors: { origin: "http://localhost:5173" }
-// });
-
-// const io = require("socket.io")(server, {
-//   pingTimeout: 60000,
-//   // cors: { origin: "https://chat-mern-app.vercel.app" }
-//   cors: { origin: "https://chat-mern-app.onrender.app" }
-// });
-
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
-  // cors: { origin: "https://chat-mern-app.vercel.app" }
-  cors: { origin: "https://chat-mern-app-nzh1.onrender.com" }
+  cors: {
+    origin: [
+      "http://localhost:5173",
+      "https://chat-mern-app.vercel.app",
+      "https://chat-mern-app.onrender.com",
+    ]
+  }
 });
 
 let onlineUsers = [];
