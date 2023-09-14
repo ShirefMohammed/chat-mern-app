@@ -26,7 +26,7 @@ const ChatCard = ({ chat }) => {
   }
 
   const checkOnlineStatus = () => {
-    return onlineUsers.some(user => user.userId == anotherUser?._id);
+    return onlineUsers?.some(user => user.userId == anotherUser?._id);
   };
 
   return (
