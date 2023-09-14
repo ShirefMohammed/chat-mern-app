@@ -59,7 +59,17 @@ function App() {
             />
 
             <Route
+              path='https://chat-mern-app.vercel.app/'
+              element={<Authentication />}
+            />
+
+            <Route
               path="/chat"
+              element={<Chat />}
+            />
+
+            <Route
+              path="https://chat-mern-app.vercel.app/chat"
               element={<Chat />}
             />
           </Routes>
