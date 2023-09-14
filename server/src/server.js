@@ -16,7 +16,7 @@ app.use(cors({
   origin: [
     "http://localhost:5173",
     "https://chat-mern-app.vercel.app",
-    "https://chat-mern-app.onrender.com]",
+    "https://chat-mern-app-client.onrender.com",
   ],
   methods: ["GET, POST, PUT"],
   credentials: true
@@ -40,7 +40,7 @@ const io = require("socket.io")(server, {
     origin: [
       "http://localhost:5173",
       "https://chat-mern-app.vercel.app",
-      "https://chat-mern-app.onrender.com",
+      "https://chat-mern-app-client.onrender.com",
     ]
   }
 });
