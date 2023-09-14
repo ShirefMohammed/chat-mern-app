@@ -121,8 +121,8 @@ const Chat = () => {
               style={{ height: "calc(100vh - 72px)" }}
             >
               <div className="p-4 flex gap-x-4 max-w-7xl mx-auto h-full">
-                {/* <ChatList />
-                <ChatBoard /> */}
+                <ChatList />
+                <ChatBoard />
               </div>
             </div>
           </div>

@@ -13,12 +13,17 @@ connectDB();
 const app = express();
 
 // app.use(cors({ origin: "http://localhost:5173" }));
+// app.use(cors({
+//   origin: "https://chat-mern-app.vercel.app",
+//   methods: ["GET, POST, PUT"],
+//   credentials: true
+// }));
 app.use(cors({
-  origin: "https://chat-mern-app.vercel.app",
+  origin: "https://chat-mern-app-nzh1.onrender.com",
   methods: ["GET, POST, PUT"],
   credentials: true
 }));
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
 app.use("/authentication", authenticationRouter);
 app.use("/users", usersRouter);
@@ -42,9 +47,17 @@ const server = app.listen(_PORT, () => console.log(`Server Works On ${_PORT}`));
 //   pingTimeout: 60000,
 //   cors: { origin: "http://localhost:5173" }
 // });
+
+// const io = require("socket.io")(server, {
+//   pingTimeout: 60000,
+//   // cors: { origin: "https://chat-mern-app.vercel.app" }
+//   cors: { origin: "https://chat-mern-app.onrender.app" }
+// });
+
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
-  cors: { origin: "https://chat-mern-app.vercel.app" }
+  // cors: { origin: "https://chat-mern-app.vercel.app" }
+  cors: { origin: "https://chat-mern-app-nzh1.onrender.com" }
 });
 
 let onlineUsers = [];
