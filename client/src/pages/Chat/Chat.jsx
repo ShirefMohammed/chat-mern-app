@@ -91,7 +91,9 @@ const Chat = () => {
 
   // set current chat id in local storage
   useEffect(() => {
-    localStorage.setItem("currentChatId", currentChat?._id);
+    if (currentChat?._id){
+      localStorage.setItem("currentChatId", currentChat?._id);
+    }
   }, [currentChat]);
 
   return (
