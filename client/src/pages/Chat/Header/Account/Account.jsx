@@ -13,6 +13,7 @@ const Account = () => {
   const logoOut = () => {
     setCookies("access_token", "");
     localStorage.removeItem("mainUserId");
+    localStorage.removeItem("currentChatId");
     navigate("/");
   }
 
